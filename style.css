@@ -1,63 +1,48 @@
-/* style.css – קובץ סגנונות מלא לדף הנחיתה */
+/* style.css – מרכז כותרות, לוגו וזכויות */
 
-/* בסיס כללי */
-*{
-  box-sizing: border-box;
-}
+/* ========= בסיס כללי ========= */
+*{ box-sizing:border-box; }
 
 html,body{
   margin:0;
   padding:0;
   font-family:'Heebo',sans-serif;
-  background:#f9cb8d;          /* הצבע שביקשת */
+  background:#f9cb8d;          /* הרקע שביקשת */
   color:#222;
   scroll-behavior:smooth;
-  direction:rtl;               /* כתיבה מימין לשמאל */
+  direction:rtl;
 }
 
-/* כותרת ולוגו */
+/* ========= Header + Logo ========= */
 header#site-header{
   position:sticky;
   top:0;
   z-index:100;
   display:flex;
-  justify-content:center;
+  justify-content:center;      /* מרכז אופקי */
   align-items:center;
   padding:1.5rem 1rem;
   background:#f9cb8d;
   transition:padding .3s ease,background .3s ease;
 }
 
-/* גודל הלוגו רגיל */
 #site-logo{
   max-width:220px;
-  width:40vw;
+  width:40vw;                  /* רספונסיבי */
   height:auto;
+  display:block;               /* מאפשר margin:auto */
+  margin:0 auto;               /* מרכז “קשיח” */
   transition:transform .3s ease;
 }
 
-/* כשהגולש גולל – מוסיפים מחלקה “scrolled” ב-JS כדי לכווץ */
-body.scrolled header#site-header{
-  padding:.5rem 1rem;
-}
-body.scrolled #site-logo{
-  transform:scale(.35);        /* הלוגו מתכווץ */
-  transform-origin:center;
-}
+/* כשהגולש גולל – מוסיפים body.scrolled ב-JS */
+body.scrolled header#site-header{ padding:.5rem 1rem; }
+body.scrolled #site-logo{ transform:scale(.35); transform-origin:center; }
 
-/* תוכן עיקרי */
-main{
-  max-width:860px;
-  margin:auto;
-  padding:0 1rem 4rem;
-}
+/* ========= תוכן ========= */
+main{ max-width:860px; margin:auto; padding:0 1rem 4rem; }
 
-/* מקטע פתיח */
-#about{
-  margin-top:2rem;
-}
-
-/* יישור לשני הצדדים */
+#about{ margin-top:2rem; }
 #about p{
   text-align:justify;
   text-justify:inter-word;
@@ -65,7 +50,15 @@ main{
   margin:0 0 1.2rem;
 }
 
-/* אנימציית חשיפה חלקה – מחלקות reveal/visible */
+/* ========= טיפוגרפיה ========= */
+h1,h2{
+  margin:.2rem auto .8rem;     /* auto → מרכז אופקי */
+  text-align:center;           /* מרכז טקסט */
+}
+h1{ font-size:2rem; }
+h2{ font-size:1.35rem; }
+
+/* ========= אפקט חשיפה ========= */
 .reveal{
   opacity:0;
   transform:translateY(40px);
@@ -76,16 +69,10 @@ main{
   transform:translateY(0);
 }
 
-/* כותרות */
-h1,h2{
-  margin:.2rem 0 .8rem;
-  text-align:center;
-}
-h1{font-size:2rem;}
-h2{font-size:1.35rem;}
-
-/* כיתוב זכויות */
+/* ========= כיתוב זכויות ========= */
 footer#site-footer{
+  display:flex;
+  justify-content:center;      /* מרכז את הטקסט */
   text-align:center;
   font-size:.9rem;
   padding:1.5rem 0;
