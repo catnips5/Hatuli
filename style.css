@@ -1,12 +1,12 @@
 /* צבעים */
 :root{
-  --bg: #f9cb8d;          /* הרקע המבוקש */
-  --dark: #1e1e1e;        /* צבע טקסט כהה */
-  --accent: #b03f3f;      /* הדגשה */
+  --bg:#f9cb8d;          /* הרקע המבוקש */
+  --dark:#1e1e1e;        /* צבע טקסט כהה */
+  --accent:#b03f3f;      /* הדגשה */
 }
 
 /* איפוס בסיסי */
-*{ box-sizing:border-box; margin:0; padding:0; }
+*{box-sizing:border-box;margin:0;padding:0;}
 
 body{
   font-family:'Heebo',sans-serif;
@@ -19,7 +19,7 @@ body{
 /* כותרת ולוגו */
 header{
   position:fixed;
-  top:0; left:0;
+  top:0;left:0;
   width:100%;
   background:transparent;
   display:flex;
@@ -42,7 +42,7 @@ header.shrink{
   backdrop-filter:blur(6px);
   box-shadow:0 2px 6px rgba(0,0,0,.1);
 }
-header.shrink #site-logo{ transform:scale(.55); }
+header.shrink #site-logo{transform:scale(.55);}
 
 /* מרווח עליון כדי שהטקסט לא יתחבא */
 main{
@@ -55,16 +55,31 @@ main{
 h1{
   font-size:clamp(1.8rem,2.5vw,2.4rem);
   text-align:center;
-  margin-bottom:1.4rem;
+  margin-bottom:1.2rem;
   font-weight:700;
 }
 
-/* אפקט fade-in עדין */
-.reveal{ opacity:0; transform:translateY(40px); transition:all .7s ease-out; }
-.reveal.visible{ opacity:1; transform:translateY(0); }
+h2{
+  font-size:clamp(1.4rem,2.2vw,2rem);
+  text-align:center;
+  margin-bottom:1.4rem;
+  font-weight:500;
+}
 
-p{ margin-block:1rem; font-size:clamp(1rem,2.1vw,1.125rem); }
-p em, p strong, p span, h1 span{ color:var(--accent); }
+/* אפקט fade-in עדין */
+.reveal{opacity:0;transform:translateY(40px);transition:all .7s ease-out;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+p{margin-block:1rem;font-size:clamp(1rem,2.1vw,1.125rem);}
+p em, p strong, p span, h1 span, h2 span{color:var(--accent);}
 
 /* גלילה חלקה */
-html{ scroll-behavior:smooth; }
+html{scroll-behavior:smooth;}
+
+/* כותרת תחתונה */
+footer{
+  text-align:center;
+  margin:2rem 0 1rem;
+  font-size:.9rem;
+  color:var(--dark);
+}
