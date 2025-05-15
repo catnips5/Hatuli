@@ -1,85 +1,94 @@
-/* צבעים */
-:root{
-  --bg:#f9cb8d;          /* הרקע המבוקש */
-  --dark:#1e1e1e;        /* צבע טקסט כהה */
-  --accent:#b03f3f;      /* הדגשה */
+/* style.css – קובץ סגנונות מלא לדף הנחיתה */
+
+/* בסיס כללי */
+*{
+  box-sizing: border-box;
 }
 
-/* איפוס בסיסי */
-*{box-sizing:border-box;margin:0;padding:0;}
-
-body{
+html,body{
+  margin:0;
+  padding:0;
   font-family:'Heebo',sans-serif;
-  line-height:1.8;
-  background:var(--bg);
-  color:var(--dark);
-  overflow-x:hidden;
+  background:#f9cb8d;          /* הצבע שביקשת */
+  color:#222;
+  scroll-behavior:smooth;
+  direction:rtl;               /* כתיבה מימין לשמאל */
 }
 
 /* כותרת ולוגו */
-header{
-  position:fixed;
-  top:0;left:0;
-  width:100%;
-  background:transparent;
+header#site-header{
+  position:sticky;
+  top:0;
+  z-index:100;
   display:flex;
   justify-content:center;
   align-items:center;
-  padding:1rem 0;
-  z-index:1000;
-  transition:all .3s ease;
+  padding:1.5rem 1rem;
+  background:#f9cb8d;
+  transition:padding .3s ease,background .3s ease;
 }
 
+/* גודל הלוגו רגיל */
 #site-logo{
-  width:150px;
+  max-width:220px;
+  width:40vw;
   height:auto;
-  transition:transform .4s ease;
+  transition:transform .3s ease;
 }
 
-/* כיווץ בלחיצת גלילה */
-header.shrink{
-  background:rgba(0,0,0,.04);
-  backdrop-filter:blur(6px);
-  box-shadow:0 2px 6px rgba(0,0,0,.1);
+/* כשהגולש גולל – מוסיפים מחלקה “scrolled” ב-JS כדי לכווץ */
+body.scrolled header#site-header{
+  padding:.5rem 1rem;
 }
-header.shrink #site-logo{transform:scale(.55);}
+body.scrolled #site-logo{
+  transform:scale(.35);        /* הלוגו מתכווץ */
+  transform-origin:center;
+}
 
-/* מרווח עליון כדי שהטקסט לא יתחבא */
+/* תוכן עיקרי */
 main{
-  padding-top:220px;
-  max-width:850px;
+  max-width:860px;
   margin:auto;
-  padding-inline:1.2rem;
+  padding:0 1rem 4rem;
 }
 
-h1{
-  font-size:clamp(1.8rem,2.5vw,2.4rem);
-  text-align:center;
-  margin-bottom:1.2rem;
-  font-weight:700;
+/* מקטע פתיח */
+#about{
+  margin-top:2rem;
 }
 
-h2{
-  font-size:clamp(1.4rem,2.2vw,2rem);
-  text-align:center;
-  margin-bottom:1.4rem;
-  font-weight:500;
+/* יישור לשני הצדדים */
+#about p{
+  text-align:justify;
+  text-justify:inter-word;
+  line-height:1.8;
+  margin:0 0 1.2rem;
 }
 
-/* אפקט fade-in עדין */
-.reveal{opacity:0;transform:translateY(40px);transition:all .7s ease-out;}
-.reveal.visible{opacity:1;transform:translateY(0);}
+/* אנימציית חשיפה חלקה – מחלקות reveal/visible */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity .6s ease,transform .6s ease;
+}
+.reveal.visible{
+  opacity:1;
+  transform:translateY(0);
+}
 
-p{margin-block:1rem;font-size:clamp(1rem,2.1vw,1.125rem);}
-p em, p strong, p span, h1 span, h2 span{color:var(--accent);}
-
-/* גלילה חלקה */
-html{scroll-behavior:smooth;}
-
-/* כותרת תחתונה */
-footer{
+/* כותרות */
+h1,h2{
+  margin:.2rem 0 .8rem;
   text-align:center;
-  margin:2rem 0 1rem;
+}
+h1{font-size:2rem;}
+h2{font-size:1.35rem;}
+
+/* כיתוב זכויות */
+footer#site-footer{
+  text-align:center;
   font-size:.9rem;
-  color:var(--dark);
+  padding:1.5rem 0;
+  background:#f9cb8d;
+  border-top:1px solid rgba(0,0,0,.1);
 }
