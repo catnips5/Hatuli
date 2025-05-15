@@ -1,13 +1,17 @@
-/* כיווץ לוגו בעת גלילה */
-const header = document.getElementById('site-header');
+/* script.js – כיווץ לוגו בעת גלילה + חשיפת אלמנטים */
 
-window.addEventListener('scroll', () => {
-  header.classList.toggle('shrink', window.scrollY > 60);
-});
+/* 1. כיווץ הלוגו */
+function toggleHeaderShrink() {
+  document.body.classList.toggle('scrolled', window.scrollY > 60);
+}
 
-/* חשיפת אלמנטים ב-fade-in */
+// מריצים פעם אחת בטעינת הדף + בכל גלילה
+toggleHeaderShrink();
+window.addEventListener('scroll', toggleHeaderShrink);
+
+/* 2. Fade-in לאלמנטים עם .reveal  */
 const observer = new IntersectionObserver(
-  (entries) => {
+  entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
