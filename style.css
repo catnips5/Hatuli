@@ -1,52 +1,56 @@
-/* style.css – כיווץ אנכי בלבד + כיסוי מלא לרוחב */
-
+/* ---------- Global ---------- */
 *{ box-sizing:border-box; }
 
 html,body{
   margin:0;
   padding:0;
   font-family:'Heebo',sans-serif;
-  background:#f9cb8d;       /* הרקע שביקשת */
+  background:#f9cb8d;        /* צבע רקע */
   color:#222;
   scroll-behavior:smooth;
   direction:rtl;
 }
 
-/* ========= Header ========= */
+/* ---------- Header ---------- */
 header#site-header{
   position:sticky;
-  top:0;
-  left:0;
-  width:100%;               /* תמיד מכסה 100% רוחב */
+  top:0; left:0;
+  width:100%;
   z-index:100;
   display:flex;
   justify-content:center;
   align-items:center;
-  padding:1.6rem 1rem;      /* גובה גדל/קטן דרך padding-top-bottom */
+  padding:1.6rem 1rem;       /* גובה מלא */
   background:#f9cb8d;
-  transition:padding .35s ease,
-             box-shadow .35s ease;
+  transition:padding .35s ease, box-shadow .35s ease;
 }
 
-/* תמונת לוגו */
 #site-logo{
-  width:240px;              /* לוגו גדול יותר במצב רגיל */
+  width:clamp(120px,25vw,240px);  /* לעולם לא <120 או >240 */
   height:auto;
-  max-width:60vw;
   transition:width .35s ease;
 }
 
-/* --- מצב מכווץ אחרי גלילה (body.scrolled) --- */
+/* כיווץ אנכי בעת גלילה */
 body.scrolled header#site-header{
-  padding:.4rem 1rem;       /* גובה מצטמצם */
+  padding:.4rem 1rem;        /* גובה קטן */
   box-shadow:0 2px 6px rgba(0,0,0,.08);
 }
-
 body.scrolled #site-logo{
-  width:120px;              /* רק רוחב-הלוגו מצטמצם; הכותרת עדיין ברוחב מלא */
+  width:120px;               /* לוגו קטן יותר */
 }
 
-/* ========= תוכן ========= */
+/* ---------- POP animation (ל-Copy) ---------- */
+@keyframes logoPop {
+  0%   { transform:scale(1);   }
+  50%  { transform:scale(1.15);}
+  100% { transform:scale(1);   }
+}
+#site-logo.pop{
+  animation:logoPop .6s ease-out forwards;
+}
+
+/* ---------- Main content ---------- */
 main{ max-width:860px; margin:auto; padding:0 1rem 4rem; }
 
 #about{ margin-top:2rem; }
@@ -57,7 +61,7 @@ main{ max-width:860px; margin:auto; padding:0 1rem 4rem; }
   margin:0 0 1.2rem;
 }
 
-/* ========= טיפוגרפיה ========= */
+/* ---------- Typography ---------- */
 h1,h2{
   margin:.2rem auto .8rem;
   text-align:center;
@@ -65,18 +69,18 @@ h1,h2{
 h1{ font-size:2rem; }
 h2{ font-size:1.35rem; }
 
-/* ========= אפקט חשיפה ========= */
+/* ---------- Reveal on scroll ---------- */
 .reveal{
   opacity:0;
   transform:translateY(40px);
-  transition:opacity .6s ease,transform .6s ease;
+  transition:opacity .6s ease, transform .6s ease;
 }
 .reveal.visible{
   opacity:1;
   transform:translateY(0);
 }
 
-/* ========= כיתוב זכויות ========= */
+/* ---------- Footer ---------- */
 footer#site-footer{
   display:flex;
   justify-content:center;
