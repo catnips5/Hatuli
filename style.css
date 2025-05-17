@@ -5,7 +5,7 @@ html,body{
   margin:0;
   padding:0;
   font-family:'Heebo',sans-serif;
-  background:#f9cb8d;        /* צבע רקע */
+  background:#f9cb8d;
   color:#222;
   scroll-behavior:smooth;
   direction:rtl;
@@ -20,37 +20,37 @@ header#site-header{
   display:flex;
   justify-content:center;
   align-items:center;
-  padding:1.6rem 1rem;       /* גובה מלא */
+  padding:1.6rem 1rem;          /* גובה רגיל */
   background:#f9cb8d;
   transition:padding .35s ease, box-shadow .35s ease;
 }
 
 #site-logo{
-  width:clamp(120px,25vw,240px);  /* לעולם לא <120 או >240 */
+  width:clamp(120px,25vw,240px);/* לא פחות מ-120 ולא יותר מ-240 */
   height:auto;
   transition:width .35s ease;
 }
 
-/* כיווץ אנכי בעת גלילה */
+/* כיווץ בעת גלילה */
 body.scrolled header#site-header{
-  padding:.4rem 1rem;        /* גובה קטן */
+  padding:.4rem 1rem;           /* גובה קטן */
   box-shadow:0 2px 6px rgba(0,0,0,.08);
 }
 body.scrolled #site-logo{
-  width:120px;               /* לוגו קטן יותר */
+  width:120px;                  /* לוגו קטן יותר */
 }
 
 /* ---------- POP animation (ל-Copy) ---------- */
-@keyframes logoPop {
-  0%   { transform:scale(1);   }
-  50%  { transform:scale(1.15);}
-  100% { transform:scale(1);   }
+@keyframes logoPop{
+  0%{ transform:scale(1); }
+  50%{ transform:scale(1.15); }
+  100%{ transform:scale(1); }
 }
 #site-logo.pop{
   animation:logoPop .6s ease-out forwards;
 }
 
-/* ---------- Main content ---------- */
+/* ---------- Content ---------- */
 main{ max-width:860px; margin:auto; padding:0 1rem 4rem; }
 
 #about{ margin-top:2rem; }
