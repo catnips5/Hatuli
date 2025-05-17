@@ -1,43 +1,50 @@
-/* style.css – מרכז כותרות, לוגו וזכויות */
+/* style.css – כיווץ אנכי בלבד + כיסוי מלא לרוחב */
 
-/* ========= בסיס כללי ========= */
 *{ box-sizing:border-box; }
 
 html,body{
   margin:0;
   padding:0;
   font-family:'Heebo',sans-serif;
-  background:#f9cb8d;          /* הרקע שביקשת */
+  background:#f9cb8d;       /* הרקע שביקשת */
   color:#222;
   scroll-behavior:smooth;
   direction:rtl;
 }
 
-/* ========= Header + Logo ========= */
+/* ========= Header ========= */
 header#site-header{
   position:sticky;
   top:0;
+  left:0;
+  width:100%;               /* תמיד מכסה 100% רוחב */
   z-index:100;
   display:flex;
-  justify-content:center;      /* מרכז אופקי */
+  justify-content:center;
   align-items:center;
-  padding:1.5rem 1rem;
+  padding:1.6rem 1rem;      /* גובה גדל/קטן דרך padding-top-bottom */
   background:#f9cb8d;
-  transition:padding .3s ease,background .3s ease;
+  transition:padding .35s ease,
+             box-shadow .35s ease;
 }
 
+/* תמונת לוגו */
 #site-logo{
-  max-width:220px;
-  width:40vw;                  /* רספונסיבי */
+  width:240px;              /* לוגו גדול יותר במצב רגיל */
   height:auto;
-  display:block;               /* מאפשר margin:auto */
-  margin:0 auto;               /* מרכז “קשיח” */
-  transition:transform .3s ease;
+  max-width:60vw;
+  transition:width .35s ease;
 }
 
-/* כשהגולש גולל – מוסיפים body.scrolled ב-JS */
-body.scrolled header#site-header{ padding:.5rem 1rem; }
-body.scrolled #site-logo{ transform:scale(.35); transform-origin:center; }
+/* --- מצב מכווץ אחרי גלילה (body.scrolled) --- */
+body.scrolled header#site-header{
+  padding:.4rem 1rem;       /* גובה מצטמצם */
+  box-shadow:0 2px 6px rgba(0,0,0,.08);
+}
+
+body.scrolled #site-logo{
+  width:120px;              /* רק רוחב-הלוגו מצטמצם; הכותרת עדיין ברוחב מלא */
+}
 
 /* ========= תוכן ========= */
 main{ max-width:860px; margin:auto; padding:0 1rem 4rem; }
@@ -52,8 +59,8 @@ main{ max-width:860px; margin:auto; padding:0 1rem 4rem; }
 
 /* ========= טיפוגרפיה ========= */
 h1,h2{
-  margin:.2rem auto .8rem;     /* auto → מרכז אופקי */
-  text-align:center;           /* מרכז טקסט */
+  margin:.2rem auto .8rem;
+  text-align:center;
 }
 h1{ font-size:2rem; }
 h2{ font-size:1.35rem; }
@@ -72,7 +79,7 @@ h2{ font-size:1.35rem; }
 /* ========= כיתוב זכויות ========= */
 footer#site-footer{
   display:flex;
-  justify-content:center;      /* מרכז את הטקסט */
+  justify-content:center;
   text-align:center;
   font-size:.9rem;
   padding:1.5rem 0;
