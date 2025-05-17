@@ -1,5 +1,6 @@
-/* style.css – כווץ חלק עליון + החלפת לוגו */
+/* style.css – מרכז כותרות, לוגו וזכויות */
 
+/* ========= בסיס כללי ========= */
 *{ box-sizing:border-box; }
 
 html,body{
@@ -18,29 +19,25 @@ header#site-header{
   top:0;
   z-index:100;
   display:flex;
-  justify-content:center;
+  justify-content:center;      /* מרכז אופקי */
   align-items:center;
   padding:1.5rem 1rem;
   background:#f9cb8d;
-  transition:padding .3s ease,
-             background .3s ease,
-             transform .3s ease;   /* נאפשר כיווץ חלק */
+  transition:padding .3s ease,background .3s ease;
 }
 
 #site-logo{
   max-width:220px;
-  width:40vw;      /* רספונסיבי */
+  width:40vw;                  /* רספונסיבי */
   height:auto;
-  display:block;
-  margin:0 auto;
+  display:block;               /* מאפשר margin:auto */
+  margin:0 auto;               /* מרכז “קשיח” */
+  transition:transform .3s ease;
 }
 
-/* --- מצב מכווץ אחרי גלילה --- */
-body.scrolled header#site-header{
-  padding:.2rem 1rem;      /* מרווח מינימלי */
-  transform:scale(.35);    /* כיווץ זהה ללוגו */
-  transform-origin:top center;
-}
+/* כשהגולש גולל – מוסיפים body.scrolled ב-JS */
+body.scrolled header#site-header{ padding:.5rem 1rem; }
+body.scrolled #site-logo{ transform:scale(.35); transform-origin:center; }
 
 /* ========= תוכן ========= */
 main{ max-width:860px; margin:auto; padding:0 1rem 4rem; }
@@ -55,8 +52,8 @@ main{ max-width:860px; margin:auto; padding:0 1rem 4rem; }
 
 /* ========= טיפוגרפיה ========= */
 h1,h2{
-  margin:.2rem auto .8rem;
-  text-align:center;
+  margin:.2rem auto .8rem;     /* auto → מרכז אופקי */
+  text-align:center;           /* מרכז טקסט */
 }
 h1{ font-size:2rem; }
 h2{ font-size:1.35rem; }
@@ -75,7 +72,7 @@ h2{ font-size:1.35rem; }
 /* ========= כיתוב זכויות ========= */
 footer#site-footer{
   display:flex;
-  justify-content:center;
+  justify-content:center;      /* מרכז את הטקסט */
   text-align:center;
   font-size:.9rem;
   padding:1.5rem 0;
