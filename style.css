@@ -1,4 +1,4 @@
-/* ---------- Global ---------- */
+/* ---------- בסיס ---------- */
 *{ box-sizing:border-box; }
 
 html,body{
@@ -11,7 +11,7 @@ html,body{
   direction:rtl;
 }
 
-/* ---------- Header ---------- */
+/* ---------- Header + Logo ---------- */
 header#site-header{
   position:sticky;
   top:0; left:0;
@@ -20,73 +20,54 @@ header#site-header{
   display:flex;
   justify-content:center;
   align-items:center;
-  padding:1.6rem 1rem;          /* גובה רגיל */
+  padding:1.6rem 1rem;            /* גובה רגיל */
   background:#f9cb8d;
   transition:padding .35s ease, box-shadow .35s ease;
 }
 
 #site-logo{
-  width:clamp(120px,25vw,240px);/* לא פחות מ-120 ולא יותר מ-240 */
+  width:clamp(120px,25vw,240px);  /* מצב רגיל */
   height:auto;
-  transition:width .35s ease;
+  transition:width .35s ease, transform .35s ease;
 }
 
-/* כיווץ בעת גלילה */
+/* ----- התחלה ×2 (גודל גדול עד הגלילה הראשונה) ----- */
+body.bigstart #site-logo{
+  width:clamp(240px,50vw,480px);  /* פי-2 בערך */
+}
+
+/* ----- כיווץ בעת גלילה ----- */
 body.scrolled header#site-header{
-  padding:.4rem 1rem;           /* גובה קטן */
+  padding:.4rem 1rem;
   box-shadow:0 2px 6px rgba(0,0,0,.08);
 }
 body.scrolled #site-logo{
-  width:120px;                  /* לוגו קטן יותר */
+  width:120px;
 }
 
-/* ---------- POP animation (ל-Copy) ---------- */
+/* ---------- POP אנימציה ---------- */
 @keyframes logoPop{
-  0%{ transform:scale(1); }
-  50%{ transform:scale(1.15); }
+  0%  { transform:scale(1); }
+  50% { transform:scale(1.15); }
   100%{ transform:scale(1); }
 }
 #site-logo.pop{
   animation:logoPop .6s ease-out forwards;
 }
 
-/* ---------- Content ---------- */
+/* ---------- Reveal + טיפוגרפיה + תוכן + פוטר (ללא שינוי) ---------- */
 main{ max-width:860px; margin:auto; padding:0 1rem 4rem; }
-
 #about{ margin-top:2rem; }
-#about p{
-  text-align:justify;
-  text-justify:inter-word;
-  line-height:1.8;
-  margin:0 0 1.2rem;
-}
+#about p{ text-align:justify; text-justify:inter-word; line-height:1.8; margin:0 0 1.2rem; }
 
-/* ---------- Typography ---------- */
-h1,h2{
-  margin:.2rem auto .8rem;
-  text-align:center;
-}
-h1{ font-size:2rem; }
-h2{ font-size:1.35rem; }
+h1,h2{ margin:.2rem auto .8rem; text-align:center; }
+h1{ font-size:2rem; } h2{ font-size:1.35rem; }
 
-/* ---------- Reveal on scroll ---------- */
-.reveal{
-  opacity:0;
-  transform:translateY(40px);
-  transition:opacity .6s ease, transform .6s ease;
-}
-.reveal.visible{
-  opacity:1;
-  transform:translateY(0);
-}
+.reveal{ opacity:0; transform:translateY(40px); transition:opacity .6s ease,transform .6s ease; }
+.reveal.visible{ opacity:1; transform:translateY(0); }
 
-/* ---------- Footer ---------- */
 footer#site-footer{
-  display:flex;
-  justify-content:center;
-  text-align:center;
-  font-size:.9rem;
-  padding:1.5rem 0;
-  background:#f9cb8d;
-  border-top:1px solid rgba(0,0,0,.1);
+  display:flex; justify-content:center; text-align:center;
+  font-size:.9rem; padding:1.5rem 0;
+  background:#f9cb8d; border-top:1px solid rgba(0,0,0,.1);
 }
