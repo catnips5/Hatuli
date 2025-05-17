@@ -1,81 +1,38 @@
-/* style.css – מרכז כותרות, לוגו וזכויות */
+/* script.js – כיווץ כותרת, חשיפה, והחלפת לוגו אקראית */
 
-/* ========= בסיס כללי ========= */
-*{ box-sizing:border-box; }
-
-html,body{
-  margin:0;
-  padding:0;
-  font-family:'Heebo',sans-serif;
-  background:#f9cb8d;          /* הרקע שביקשת */
-  color:#222;
-  scroll-behavior:smooth;
-  direction:rtl;
+/* 1. כיווץ החלק העליון בזמן גלילה */
+function toggleHeaderShrink() {
+  document.body.classList.toggle('scrolled', window.scrollY > 60);
 }
+toggleHeaderShrink();
+window.addEventListener('scroll', toggleHeaderShrink);
 
-/* ========= Header + Logo ========= */
-header#site-header{
-  position:sticky;
-  top:0;
-  z-index:100;
-  display:flex;
-  justify-content:center;      /* מרכז אופקי */
-  align-items:center;
-  padding:1.5rem 1rem;
-  background:#f9cb8d;
-  transition:padding .3s ease,background .3s ease;
-}
+/* 2. Fade-in לאלמנטים עם ‎.reveal */
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold:0.2 }
+);
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-#site-logo{
-  max-width:220px;
-  width:40vw;                  /* רספונסיבי */
-  height:auto;
-  display:block;               /* מאפשר margin:auto */
-  margin:0 auto;               /* מרכז “קשיח” */
-  transition:transform .3s ease;
-}
+/* 3. החלפת לוגו אקראית כל 25 שניות */
+(() => {
+  const logo   = document.getElementById('site-logo');
+  const files  = ['clipped 2.png', 'clipped 2 - Copy.png'];
+  let current  = 0;                       // מניח שהדף מתחיל עם clipped 2.png
 
-/* כשהגולש גולל – מוסיפים body.scrolled ב-JS */
-body.scrolled header#site-header{ padding:.5rem 1rem; }
-body.scrolled #site-logo{ transform:scale(.35); transform-origin:center; }
-
-/* ========= תוכן ========= */
-main{ max-width:860px; margin:auto; padding:0 1rem 4rem; }
-
-#about{ margin-top:2rem; }
-#about p{
-  text-align:justify;
-  text-justify:inter-word;
-  line-height:1.8;
-  margin:0 0 1.2rem;
-}
-
-/* ========= טיפוגרפיה ========= */
-h1,h2{
-  margin:.2rem auto .8rem;     /* auto → מרכז אופקי */
-  text-align:center;           /* מרכז טקסט */
-}
-h1{ font-size:2rem; }
-h2{ font-size:1.35rem; }
-
-/* ========= אפקט חשיפה ========= */
-.reveal{
-  opacity:0;
-  transform:translateY(40px);
-  transition:opacity .6s ease,transform .6s ease;
-}
-.reveal.visible{
-  opacity:1;
-  transform:translateY(0);
-}
-
-/* ========= כיתוב זכויות ========= */
-footer#site-footer{
-  display:flex;
-  justify-content:center;      /* מרכז את הטקסט */
-  text-align:center;
-  font-size:.9rem;
-  padding:1.5rem 0;
-  background:#f9cb8d;
-  border-top:1px solid rgba(0,0,0,.1);
-}
+  setInterval(() => {
+    let next;
+    do {
+      next = Math.floor(Math.random() * files.length); // 0 או 1
+    } while (next === current);         // שלא יחזור על אותו קובץ ברצף
+    current   = next;
+    logo.src  = files[current];
+  }, 25_000); // 25,000 ms = 25 s
+})();
