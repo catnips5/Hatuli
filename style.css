@@ -1,3 +1,4 @@
+/* style.css */
 /* ---------- בסיס ---------- */
 *{ box-sizing:border-box; }
 
@@ -11,6 +12,17 @@ html,body{
   direction:rtl;
 }
 
+/* ---------- פס-התקדמות גלילה ---------- */
+#scroll-progress{
+  position:fixed;
+  top:0; left:0;
+  height:4px;
+  width:0%;
+  background:#aa4422;          /* אפשר לשנות צבע לפי הטעם */
+  z-index:9999;
+  transition:width .25s ease-out;
+}
+
 /* ---------- Header + Logo ---------- */
 header#site-header{
   position:sticky;
@@ -20,20 +32,20 @@ header#site-header{
   display:flex;
   justify-content:center;
   align-items:center;
-  padding:1.6rem 1rem;            /* גובה רגיל */
+  padding:1.6rem 1rem;          /* גובה רגיל */
   background:#f9cb8d;
   transition:padding .35s ease, box-shadow .35s ease;
 }
 
 #site-logo{
-  width:clamp(120px,25vw,240px);  /* מצב רגיל */
+  width:clamp(120px,25vw,240px);/* מצב רגיל */
   height:auto;
   transition:width .35s ease, transform .35s ease;
 }
 
 /* ----- התחלה ×2 (גודל גדול עד הגלילה הראשונה) ----- */
 body.bigstart #site-logo{
-  width:clamp(240px,50vw,480px);  /* פי-2 בערך */
+  width:clamp(240px,50vw,480px);/* פי-2 בערך */
 }
 
 /* ----- כיווץ בעת גלילה ----- */
@@ -55,7 +67,7 @@ body.scrolled #site-logo{
   animation:logoPop .6s ease-out forwards;
 }
 
-/* ---------- Reveal + טיפוגרפיה + תוכן + פוטר (ללא שינוי) ---------- */
+/* ---------- Reveal + טיפוגרפיה + תוכן + פוטר ---------- */
 main{ max-width:860px; margin:auto; padding:0 1rem 4rem; }
 #about{ margin-top:2rem; }
 #about p{ text-align:justify; text-justify:inter-word; line-height:1.8; margin:0 0 1.2rem; }

@@ -1,3 +1,4 @@
+/* script.js */
 /* ---------- 1. כותרת מתכווצת + מצב-התחלה גדול ---------- */
 function handleScroll(){
   if(window.scrollY > 60){
@@ -57,3 +58,11 @@ function scheduleFlash(){
   setTimeout(()=>{ flashCycle(); scheduleFlash(); }, delay);
 }
 scheduleFlash();
+
+/* ---------- 6. פס-התקדמות גלילה ---------- */
+window.addEventListener('scroll', ()=>{
+  const scrollTop  = window.scrollY;
+  const docHeight  = document.documentElement.scrollHeight - window.innerHeight;
+  const percentage = docHeight ? (scrollTop / docHeight) * 100 : 0;
+  document.getElementById('scroll-progress').style.width = percentage + '%';
+});
