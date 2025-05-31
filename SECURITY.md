@@ -1,26 +1,35 @@
 # Security Policy
 
-## Supported Versions
-| Version | Supported            |
-|---------|----------------------|
-| main    | ✅ Always supported  |
+Thank you for helping keep this project secure!  
+If you discover a vulnerability or have a security concern, **please follow the steps below instead of opening a public issue.**
 
-## Reporting a Vulnerability
-If you discover a security issue **please do _not_ create a public issue**.  
-Instead, email us at **security@example.com** with:
+## 🔒 Supported Versions
+| Version | Supported? |
+|---------|------------|
+| `main` (branch) | ✅ |
+| older tags | ❌ |
 
-1. A clear description of the vulnerability.
-2. Steps to reproduce (proof‐of‐concept is ideal).
-3. Any potential fixes you have in mind.
+> *This is a static site built with plain HTML / CSS / JS.
+> No server-side code or user data is stored, so the attack surface is minimal.*
 
-We aim to respond within **48 hours** and resolve confirmed issues within **30 days**.
+## 📝 Reporting a Vulnerability
+1. **Privately contact the maintainer:**  
+   <tal.semenov97"gmail.com>  
+   *(replace with your real address or an alias).*
+2. Include:
+   - Detailed description of the issue  
+   - Steps to reproduce (proof-of-concept if possible)  
+   - Your expectations / suggested fix
 
----
-### Public Disclosure
-After a fix is released we will publish a security advisory summarizing:
-* Impact & severity (CVSS score if applicable)  
-* Affected versions  
-* Mitigation steps  
+I will **acknowledge receipt within 48 hours** and provide a timeline for a fix.  
+Public disclosure will occur **only after** a patch is released or we agree it is no longer a security risk.
 
----
-> **Note:** Replace `security@example.com` with your preferred, monitored address.
+## 🔧 Remediation Process
+| Phase | Typical Timeframe |
+|-------|------------------|
+| Triage & confirmation | ≤ 2 days |
+| Fix development | ≤ 7 days (simple static-site changes are often faster) |
+| Release & notification | Immediately after merge |
+
+## 🙏 Acknowledgements
+If you responsibly disclose a valid issue, you may (with your consent) be credited in the project’s changelog. Thank you!
