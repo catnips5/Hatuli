@@ -24,12 +24,16 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
 /* ---------- 3. לוגו, נתיבים ---------- */
 const logo   = document.getElementById('site-logo');
+const SRC_A  = 'clipped 2.png';
+const SRC_B  = 'clipped 2 - Copy.png';
 
 /* ---------- 4. אנימציית “POP” (הגדלה קלה) ---------- */
 function popCycle(){
+  logo.src = SRC_B;
   logo.classList.add('pop');
   logo.addEventListener('animationend', ()=>{
     logo.classList.remove('pop');
+    logo.src = SRC_A;
   }, { once:true });
 }
 
@@ -43,10 +47,8 @@ schedulePop();
 
 /* ---------- 5. הבזק מהיר 1-2-1 (1.3 s) ---------- */
 function flashCycle(){
-  logo.classList.add('flash');
-  logo.addEventListener('animationend', ()=>{
-    logo.classList.remove('flash');
-  }, { once:true });
+  logo.src = SRC_B;
+  setTimeout(()=>{ logo.src = SRC_A; }, 650);           // חצי מ-1.3 s
 }
 
 /* ----- תזמון אקראי על בסיס 23 שניות ----- */
@@ -63,27 +65,4 @@ window.addEventListener('scroll', ()=>{
   const docHeight  = document.documentElement.scrollHeight - window.innerHeight;
   const percentage = docHeight ? (scrollTop / docHeight) * 100 : 0;
   document.getElementById('scroll-progress').style.width = percentage + '%';
-  if(scrollTop > 200){
-    backTop.classList.add('show');
-  }else{
-    backTop.classList.remove('show');
-  }
-});
-
-/* ---------- Theme Toggle ---------- */
-const toggleBtn = document.getElementById('theme-toggle');
-const backTop   = document.getElementById('back-to-top');
-if(localStorage.getItem('theme') === 'dark'){
-  document.body.classList.add('dark');
-  toggleBtn.textContent = '☀️';
-}
-toggleBtn.addEventListener('click', ()=>{
-  document.body.classList.toggle('dark');
-  const isDark = document.body.classList.contains('dark');
-  toggleBtn.textContent = isDark ? '☀️' : '🌙';
-  localStorage.setItem('theme', isDark ? 'dark' : 'light');
-});
-
-backTop.addEventListener('click', ()=>{
-  window.scrollTo({ top:0, behavior:'smooth' });
 });
