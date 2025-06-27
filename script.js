@@ -66,3 +66,21 @@ window.addEventListener('scroll', ()=>{
   const percentage = docHeight ? (scrollTop / docHeight) * 100 : 0;
   document.getElementById('scroll-progress').style.width = percentage + '%';
 });
+
+/* ---------- 7. מצב יום/לילה ---------- */
+const toggleBtn = document.getElementById('theme-toggle');
+function setTheme(isDark){
+  document.body.classList.toggle('dark', isDark);
+  toggleBtn.textContent = isDark ? '☀️' : '🌙';
+}
+
+toggleBtn.addEventListener('click', () => {
+  const isDark = !document.body.classList.contains('dark');
+  setTheme(isDark);
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});
+
+const savedTheme = localStorage.getItem('theme');
+if(savedTheme === 'dark'){
+  setTheme(true);
+}
